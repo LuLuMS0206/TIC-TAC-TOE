@@ -1,20 +1,26 @@
+import { useState } from "react"
+
 const TURNS = {
   X: 'x',
   O: 'o'
 }
 
 
-const board = Array(9).fill(null)
 
-const Square = ({children, updateBoard, index}) => {
+const Square = ({ children, updateBoard, index, isSelected }) => {
+
+  const className = `square {isSelected ? 'is-selected' : ''}`
   return (
-    <div className="square">
+    <div className= {className}>
       {children}
     </div>
   )
 }
 
 function App() {
+
+  const [board, setBoard] = useState(Array(9).fill(null))
+  const [turn, setTurn] = useState(TURNS.X)
 
   return (
     <main className="board">
@@ -24,14 +30,23 @@ function App() {
           board.map((_, index) => {
             return (
               <Square className="cell" key={index} index={index}>
-                {index}
               </Square>
             )
           })
         }
       </section>
+      
+      <section className="turn">
+      <Square isSelected={turn === TURNS.X}>
+        {TURNS.X}
+      </Square>
+
+      <Square isSelected={turn === TURNS.O}>
+        {TURNS.O}
+      </Square>
+      </section>
     </main>
-    
+
   )
 }
 
