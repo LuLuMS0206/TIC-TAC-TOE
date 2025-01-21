@@ -3,7 +3,7 @@ import confetti from "canvas-confetti";
 import { Square } from "./components/square";
 import { TURNS } from "./constants";
 import { checkWinner, checkEndGame } from "./logic/board";
-import { winnerModal } from "./components/winner";
+import { WinnerModal } from "./components/winner";
 
 
 function App() {
@@ -70,7 +70,7 @@ function App() {
         </Square>
       </section>
 
-  <winnerModal resetGame={resetGame} winner={winner} />
+  <WinnerModal resetGame={resetGame} winner={winner} />
 
     </main>
 
